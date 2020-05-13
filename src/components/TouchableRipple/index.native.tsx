@@ -26,6 +26,8 @@ type Props = React.ComponentProps<typeof TouchableWithoutFeedback> & {
   children: React.ReactNode;
   style?: StyleProp<ViewStyle>;
   theme: Theme;
+  testID?: string;
+  accessible?: boolean;
 };
 
 class TouchableRipple extends React.Component<Props> {
@@ -46,6 +48,8 @@ class TouchableRipple extends React.Component<Props> {
       underlayColor,
       children,
       theme,
+      testID,
+      accessible,
       ...rest
     } = this.props;
 
@@ -79,6 +83,8 @@ class TouchableRipple extends React.Component<Props> {
                   borderless
                 )
           }
+          testID={testID}
+          accessible={accessible}
         >
           <View style={[borderless && { overflow: 'hidden' }, style]}>
             {React.Children.only(children)}
@@ -100,6 +106,8 @@ class TouchableRipple extends React.Component<Props> {
                 .rgb()
                 .string()
         }
+        testID={testID}
+        accessible={accessible}
       >
         {React.Children.only(children)}
       </TouchableHighlight>
