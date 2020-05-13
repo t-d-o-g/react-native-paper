@@ -54,6 +54,14 @@ type Props = React.ComponentPropsWithRef<typeof TouchableWithoutFeedback> & {
    * @optional
    */
   theme: Theme;
+    /**
+   * Pass down testID from card props to touchable
+   */
+  testID?: string;
+  /**
+   * Pass down accessible from card props to touchable
+   */
+  accessible?: boolean;
 };
 
 /**
@@ -237,6 +245,8 @@ class TouchableRipple extends React.Component<Props> {
       underlayColor,
       children,
       theme,
+      testID,
+      accessible,
       ...rest
     } = this.props;
     /* eslint-enable @typescript-eslint/no-unused-vars */
@@ -249,6 +259,8 @@ class TouchableRipple extends React.Component<Props> {
         onPressIn={this.handlePressIn}
         onPressOut={this.handlePressOut}
         disabled={disabled}
+        testID={testID}
+        accessible={accessible}
       >
         <View
           style={[styles.touchable, borderless && styles.borderless, style]}
